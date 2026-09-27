@@ -1,0 +1,42 @@
+version: "3.8"
+
+services:
+  web:
+    build: ./apache
+    image: trial-web:latest
+    container_name: apache_php_server
+    restart: always
+    ports:
+      - "8081:80"
+    volumes:
+      - ./src:/var/www/html
+    depends_on:
+      - db
+
+  db:
+    image: mariadb:10.4.11
+    container_name: mariadb_server
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: app_db
+    ports:
+      - "3306:3306"
+    volumes:
+      - mariadb_data:/var/lib/mysql
+      - ./mysql/conf/my.ini:/etc/mysql/conf.d/my.ini
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:5.0.1
+    container_name: phpmyadmin_ui
+    restart: always
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: db
+      UPLOAD_LIMIT: 512M
+    depends_on:
+      - db
+
+volumes:
+  mariadb_data:
