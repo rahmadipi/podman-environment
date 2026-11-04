@@ -23,7 +23,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && apt-get update \
     && ACCEPT_EULA=Y apt-get install -y msodbcsql17 \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install -j$(nproc) gd intl mysqli pdo_mysql zip \
+    && docker-php-ext-install -j$(nproc) gd intl mysqli pdo_mysql zip bcmath \
     && pecl install sqlsrv-5.10.0 pdo_sqlsrv-5.10.0 \
     && docker-php-ext-enable sqlsrv pdo_sqlsrv \
     && rm -rf /var/lib/apt/lists/*
