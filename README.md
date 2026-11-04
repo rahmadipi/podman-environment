@@ -2,8 +2,8 @@
 
 A containerized development environment that imitates:
 
-- PHP 7.4.1
-- Apache
+- Apache PHP 7.4.1
+- Apache PHP 8.3.36
 - MariaDB 10.4.11
 - phpMyAdmin 5.0.1
 
@@ -34,7 +34,8 @@ podman-compose ps
 
 ## Access the Services
 
-- Application: http://localhost:8081
+- App on PHP 74: http://localhost:8074
+- App on PHP 83: http://localhost:8083
 - phpMyAdmin: http://localhost:8080
 
 phpMyAdmin connection details:
@@ -57,7 +58,7 @@ podman-compose build web
 Save all required images:
 
 ```powershell
-podman save -o trial-images.tar trial-web:latest mariadb:10.4.11 phpmyadmin/phpmyadmin:5.0.1
+podman save -o trial-images.tar trial-web:7.4 trial-web:8.3 mariadb:10.4.11 phpmyadmin/phpmyadmin:5.0.1
 ```
 
 The image archive does not contain:

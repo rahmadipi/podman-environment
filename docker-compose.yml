@@ -1,13 +1,27 @@
 version: "3.8"
 
 services:
-  web:
-    build: ./apache
-    image: trial-web:latest
-    container_name: apache_php_server
+  # Layanan Web untuk PHP 7.4
+  web74:
+    build: ./apache74
+    image: trial-web:7.4
+    container_name: apache_php_74
     restart: always
     ports:
-      - "8081:80"
+      - "8074:80"
+    volumes:
+      - ./src:/var/www/html
+    depends_on:
+      - db
+
+  # Layanan Web untuk PHP 8.3
+  web83:
+    build: ./apache83
+    image: trial-web:8.3
+    container_name: apache_php_83
+    restart: always
+    ports:
+      - "8083:80"
     volumes:
       - ./src:/var/www/html
     depends_on:
