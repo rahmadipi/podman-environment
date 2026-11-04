@@ -40,7 +40,7 @@ services:
     volumes:
       - mariadb_data:/var/lib/mysql
 
-  phpmyadmin:
+  pma:
     image: phpmyadmin/phpmyadmin:5.0.1
     container_name: phpmyadmin_ui
     restart: always

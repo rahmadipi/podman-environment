@@ -26,6 +26,16 @@ For normal startup:
 podman-compose up -d
 ```
 
+Run specific php only
+
+```powershell
+podman-compose up -d web83 db pma
+```
+
+```powershell
+podman-compose up -d web74 db pma
+```
+
 Check the container status:
 
 ```powershell
