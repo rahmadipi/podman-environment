@@ -12,6 +12,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     unzip \
     unixodbc-dev \
     default-mysql-client \
+    iputils-ping \
+    libcap2-bin \
+    && setcap cap_net_raw+ep /bin/ping \
     # 1. Unduh kuncinya dan simpan di keyring
     && curl -fsSL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor -o /usr/share/keyrings/microsoft-prod.gpg \
     # 2. Tambahkan repo Debian 12 (bookworm) secara eksplisit menunjuk [signed-by=...]

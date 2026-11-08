@@ -11,6 +11,8 @@ services:
       - "8074:80"
     volumes:
       - ./src:/var/www/html
+    cap_add:
+      - NET_RAW
     depends_on:
       - db
 
@@ -24,6 +26,8 @@ services:
       - "8083:80"
     volumes:
       - ./src:/var/www/html
+    cap_add:
+      - NET_RAW
     depends_on:
       - db
 

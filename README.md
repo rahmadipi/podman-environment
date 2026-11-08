@@ -29,11 +29,11 @@ podman-compose up -d
 Run specific php only
 
 ```powershell
-podman-compose up -d web83 db pma
+podman-compose up -d web83 db
 ```
 
 ```powershell
-podman-compose up -d web74 db pma
+podman-compose up -d web74 db
 ```
 
 Check the container status:
